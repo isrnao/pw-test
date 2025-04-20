@@ -5,10 +5,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30 * 1000, // 各テストの最大時間
   retries: process.env.CI ? 2 : 0,
-  reporter: process.env.CI
-    ? [['list'], ['html', { outputFolder: 'playwright-report' }]]
-    : [['html', { open: 'never' }]],
-
+  reporter: [['html', { outputFolder: 'playwright-report' }], ['list']],
   use: {
     headless: true, // CIではtrue、開発中に変えるならenvで切り替えも可
     viewport: { width: 1280, height: 720 },
