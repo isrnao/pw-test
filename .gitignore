@@ -1,0 +1,38 @@
+# 依存関係
+/node_modules/
+
+# テストの結果、ログ
+/test-results/
+/playwright-report/
+/tests/*.log
+*.log
+
+# ビルド時に作成されるファイル
+/dist/
+/build/
+
+# 環境変数
+.env
+.env.*
+
+# OS固有のファイル
+.DS_Store
+Thumbs.db
+
+# IDEやエディタ設定
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# yarn関連
+.yarn/*
+yarn-error.log
+yarn-debug.log*
+
+# npm関連
+npm-debug.log*
+package-lock.json # yarn利用の場合は無視
+
+# playwrightキャッシュ
+.playwright/
