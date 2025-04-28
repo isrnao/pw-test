@@ -6,21 +6,23 @@ test('Yahoo検索の基本機能テスト', async ({ page }) => {
     waitUntil: 'networkidle'
   });
 
-  // 検索ボックスが表示されることを確認
+  // 検索ボックスにキーワードを入力
   const searchBox = page.getByRole('searchbox', {
     name: '検索したいキーワードを入力してください'
   });
   await expect(searchBox).toBeVisible();
-
-  // 検索を実行
   await searchBox.fill('playwright');
   await searchBox.press('Enter');
 
   // 検索結果ページが表示されることを確認
   await expect(page).toHaveURL(/search\.yahoo\.co\.jp\/search/);
 
-  // 検索結果が表示されることを確認
-  await expect(page.locator('h3:has-text("playwright")')).toBeVisible({
+  // 最初のPlaywright関連の検索結果が表示されることを確認
+  const firstResult = page
+    .getByRole('link', { name: /Playwright.*/ })
+    .first();
+
+  await expect(firstResult).toBeVisible({
     timeout: 10000
   });
 });
