@@ -2,12 +2,10 @@ name: E2E Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      run_tests:
-        description: 'Run E2E tests'
-        required: true
-        default: 'true'
-        type: boolean
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test:
